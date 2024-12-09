@@ -42,12 +42,14 @@ public class Board : MonoBehaviour
     public int basePieceValue = 20;
     private int streakValue = 1;
     private ScoreManager scoreManager;
+    private SoundManager soundManager;
     public float refillDelay = 0.5f;
     public int[] scoreGoals;
 
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = FindObjectOfType<SoundManager>();
         scoreManager = FindObjectOfType<ScoreManager>();
         breakableTies = new BackgroundTile[width, height];
         findMatches = FindObjectOfType<FindMatches>();
@@ -276,7 +278,10 @@ public class Board : MonoBehaviour
                     breakableTies[column, row] = null;
                 }
             }
-
+            if(soundManager != null)
+            {
+                soundManager.PlayRandomDestroyNoice();
+            }
             GameObject particle =Instantiate(destroyEffect, allDots[column, row].transform.position, Quaternion.identity);
             Destroy(particle, .5f);
             Destroy(allDots[column, row]);
