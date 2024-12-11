@@ -347,6 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7add3bd9de17f4afba74c24043d79c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  world: {fileID: 11400000, guid: 7afb6fa3fbbec404fa0a82cd3bed12b9, type: 2}
+  level: 0
   currentState: 1
   width: 7
   height: 7
@@ -1916,7 +1918,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 952918303}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1205433646}
+        m_TargetAssemblyTypeName: BackToSplash, Assembly-CSharp
+        m_MethodName: OK
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &952918303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2293,6 +2307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1205433644}
   - component: {fileID: 1205433645}
+  - component: {fileID: 1205433646}
   m_Layer: 0
   m_Name: EndGameManager
   m_TagString: Untagged
@@ -2336,6 +2351,19 @@ MonoBehaviour:
     gameType: 0
     counterValue: 100
   currentCounterValue: 0
+--- !u!114 &1205433646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205433643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7e783276357c649bcb13dd1872b897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToLoad: Splash
 --- !u!1 &1208391444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2904,7 +2932,7 @@ PrefabInstance:
       objectReference: {fileID: 967127302}
     - target: {fileID: 1343460300478794412, guid: 5faa3ff1d84a69f439da658f8dc829f0, type: 3}
       propertyPath: m_fontSize
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1343460300478794412, guid: 5faa3ff1d84a69f439da658f8dc829f0, type: 3}
       propertyPath: m_margin.x
@@ -2920,7 +2948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1343460300478794412, guid: 5faa3ff1d84a69f439da658f8dc829f0, type: 3}
       propertyPath: m_fontSizeBase
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1343460300478794412, guid: 5faa3ff1d84a69f439da658f8dc829f0, type: 3}
       propertyPath: m_enableAutoSizing
@@ -4191,7 +4219,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1996936232}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1205433646}
+        m_TargetAssemblyTypeName: BackToSplash, Assembly-CSharp
+        m_MethodName: OK
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1996936232
 MonoBehaviour:
   m_ObjectHideFlags: 0
