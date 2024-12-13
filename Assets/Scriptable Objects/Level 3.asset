@@ -18,8 +18,8 @@ MonoBehaviour:
   dots: []
   scoreGoals: 58020000b004000008070000
   endGameRequirements:
-    gameType: 1
-    counterValue: 100
+    gameType: 0
+    counterValue: 25
   levelGoals:
   - numberNeeded: 15
     numberCollected: 0

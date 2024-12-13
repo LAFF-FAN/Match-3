@@ -24,6 +24,6 @@ MonoBehaviour:
     counterValue: 100
   levelGoals:
   - numberNeeded: 100
-    numberCollected: 21
+    numberCollected: 13
     goalSprite: {fileID: 21300000, guid: 0179f48c551540d409b141827a9340bb, type: 3}
     matchValue: Indigo Dot

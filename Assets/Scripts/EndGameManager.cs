@@ -73,7 +73,7 @@ public class EndGameManager : MonoBehaviour
         {
             currentCounterValue--;
             counter.text = "" + currentCounterValue;
-            if (currentCounterValue <= 1)
+            if (currentCounterValue <= 0)
             {
                 LoseGame();
             }

@@ -240,10 +240,8 @@ public class FindMatches : MonoBehaviour
 
     public void CheckBombs()
     {
-        // проверка на передвижение
         if(board.currentDot != null)
         {
-            // проверка на совпадение передвинутого объекта
             if (board.currentDot.isMatched)
             {
                 board.currentDot.isMatched = false;
@@ -256,7 +254,6 @@ public class FindMatches : MonoBehaviour
                     board.currentDot.MakeColumnBomb();
                 }
             }
-            // проверка совпадения других объектов
             else if (board.currentDot.otherDot != null)
             {
                 Dot otherDot = board.currentDot.otherDot.GetComponent<Dot>();
