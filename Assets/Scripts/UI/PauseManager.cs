@@ -12,9 +12,13 @@ public class PauseManager : MonoBehaviour
     public Image soundButton;
     public Sprite musicOnSprite;
     public Sprite musicOffSprite;
+    public SoundManager sound;
 
     void Start()
     {
+        sound = FindAnyObjectByType<SoundManager>();
+        board = FindAnyObjectByType<Board>();
+        pausePanel.SetActive(false);
         if (PlayerPrefs.HasKey("Sound"))
         {
             if(PlayerPrefs.GetInt("Sound") == 0)
@@ -42,17 +46,20 @@ public class PauseManager : MonoBehaviour
             {
                 soundButton.sprite = musicOnSprite;
                 PlayerPrefs.SetInt("Sound", 1);
+                sound.adjustVolume();
             }
             else
             {
                 soundButton.sprite = musicOffSprite;
                 PlayerPrefs.SetInt("Sound", 0);
+                sound.adjustVolume();
             }
         }
         else
         {
             soundButton.sprite = musicOffSprite;
             PlayerPrefs.SetInt("Sound", 1);
+            sound.adjustVolume();
         }
     }
 

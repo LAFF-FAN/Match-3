@@ -1208,6 +1208,7 @@ MonoBehaviour:
   soundButton: {fileID: 15152864}
   musicOnSprite: {fileID: 21300000, guid: 99ce2f07c16e53d4badbe996dd739ce4, type: 3}
   musicOffSprite: {fileID: 21300000, guid: 86b742cabee0fd14caf0638c11893726, type: 3}
+  sound: {fileID: 0}
 --- !u!1 &404189696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +1833,7 @@ MonoBehaviour:
   destroyNoise:
   - {fileID: 802643996}
   - {fileID: 1914168891}
+  backgroundMusic: {fileID: 789975740}
 --- !u!1 &789975738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,7 +1877,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3c4fa2ef6ffad1c48ab3fbc9fa41b74e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

@@ -5,11 +5,11 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System;
 
-public class AuthManager : MonoBehaviour
+public class MyAuthManager : MonoBehaviour
 {
-    public InputField usernameInput;
-    public InputField passwordInput;
-    public InputField confirmPasswordInput;
+    public TMP_InputField usernameInput;
+    public TMP_InputField passwordInput;
+    public TMP_InputField confirmPasswordInput;
     public TextMeshProUGUI feedbackText;
 
     private string dbPath;
@@ -18,14 +18,13 @@ public class AuthManager : MonoBehaviour
     void Start()
     {
 #if UNITY_EDITOR
-        dbPath = "URI=file:" + Application.dataPath + "/Plugins/SQLiter/data_base_for_game.db";
+        dbPath = "URI=file:" + Application.dataPath + "/Plugins/SQLiter/RegDB.db";
 #elif UNITY_STANDALONE_WIN
-        dbPath = "URI=file:" + Application.dataPath + "/Plugins/SQLiter/data_base_for_game.db";
+        dbPath = "URI=file:" + Application.dataPath + "/Plugins/SQLiter/RegDB.db";
 #else
-        dbPath = "URI=file:" + Application.persistentDataPath + "/Plugins/SQLiter/data_base_for_game.db";
+        dbPath = "URI=file:" + Application.persistentDataPath + "/Plugins/SQLiter/RegDB.db";
 #endif
     }
-
     public void Register()
     {
         string username = usernameInput.text;
@@ -92,7 +91,6 @@ public class AuthManager : MonoBehaviour
                 }
 
                 feedbackText.text = "Регистрация успешна!";
-                //SceneManager.LoadScene("Authorisation");
             }
         }
         catch (Exception ex)
@@ -100,7 +98,6 @@ public class AuthManager : MonoBehaviour
             feedbackText.text = "Ошибка регистрации: " + ex.Message;
         }
     }
-
     public void Login()
     {
         string username = usernameInput.text;
@@ -129,13 +126,12 @@ public class AuthManager : MonoBehaviour
                     {
                         int userId = Convert.ToInt32(result);
                         PlayerPrefs.SetInt("UserID", userId);
-                        PlayerPrefs.SetString("Username", username); 
-                        PlayerPrefs.SetInt("IsLoggedIn", 1); 
+                        PlayerPrefs.SetString("Username", username);
+                        PlayerPrefs.SetInt("IsLoggedIn", 1);
                         PlayerPrefs.Save();
 
                         feedbackText.text = "Вход выполнен успешно!";
                         isLoggedIn = true;
-                        //SceneManager.LoadScene("MainMenu");
                     }
                     else
                     {
