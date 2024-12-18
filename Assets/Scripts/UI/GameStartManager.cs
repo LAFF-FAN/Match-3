@@ -31,6 +31,15 @@ public class GameStartManager : MonoBehaviour
         logPanel.SetActive(true);
     }
 
+    public void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    // В противном случае выходим из игры
+    Application.Quit();
+#endif
+    }
     // Update is called once per frame
     void Update()
     {

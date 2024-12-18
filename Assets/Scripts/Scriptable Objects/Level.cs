@@ -20,6 +20,12 @@ public class Level : ScriptableObject
 
     [Header("End Game Requirements")]
     public EndGameRequirements endGameRequirements;
+    public DifficultyLevel difficulty; // Добавлено поле для уровня сложности
     public BlankGoal[] levelGoals;
 
+    public enum DifficultyLevel
+    {
+        Normal, // Обычный
+        Hard    // Сложный
+    }
 }

@@ -9,7 +9,6 @@ public class ConfirmPanel : MonoBehaviour
     public string levelToLoad;
     public Image[] stars;
     public int level;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +37,14 @@ public class ConfirmPanel : MonoBehaviour
 
     public void Play()
     {
+        PlayerPrefs.SetString("GameDifficulty", "Normal");
         PlayerPrefs.SetInt("Current Level", level - 1);
         SceneManager.LoadScene(levelToLoad);
     }
-
+    public void PlayHard()
+    {
+        PlayerPrefs.SetString("GameDifficulty", "Hard");
+        PlayerPrefs.SetInt("Current Level", level - 1);
+        SceneManager.LoadScene(levelToLoad);
+    }
 }

@@ -2636,6 +2636,7 @@ MonoBehaviour:
     gameType: 0
     counterValue: 100
   currentCounterValue: 0
+  difficulty: 0
 --- !u!114 &1205433646
 MonoBehaviour:
   m_ObjectHideFlags: 0

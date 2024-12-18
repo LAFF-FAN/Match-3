@@ -80,7 +80,6 @@ public class Board : MonoBehaviour
                 {
                     width = world.levels[level].width;
                     height = world.levels[level].height;
-                    //dots = world.levels[level].dots;
                     scoreGoals = world.levels[level].scoreGoals;
                     boardLayout = world.levels[level].boardLayout;
                 }

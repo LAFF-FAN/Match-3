@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
+using System.IO;
 
 public class MyAuthManager : MonoBehaviour
 {
@@ -17,13 +18,9 @@ public class MyAuthManager : MonoBehaviour
     public static bool isLoggedIn = false;
     void Start()
     {
-#if UNITY_EDITOR
-        dbPath = "URI=file:" + Application.dataPath + "/Plugins/SQLiter/RegDB.db";
-#elif UNITY_STANDALONE_WIN
-        dbPath = "URI=file:" + Application.dataPath + "/Plugins/SQLiter/RegDB.db";
-#else
+        
         dbPath = "URI=file:" + Application.persistentDataPath + "/Plugins/SQLiter/RegDB.db";
-#endif
+        Debug.Log("Database path: " + dbPath); // Отладочный вывод пути к базе данных
     }
     public void Register()
     {

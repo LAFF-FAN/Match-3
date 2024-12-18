@@ -21,9 +21,10 @@ MonoBehaviour:
   scoreGoals: c800000058020000e8030000
   endGameRequirements:
     gameType: 0
-    counterValue: 100
+    counterValue: 20
+  difficulty: 0
   levelGoals:
-  - numberNeeded: 100
-    numberCollected: 13
+  - numberNeeded: 1
+    numberCollected: 3
     goalSprite: {fileID: 21300000, guid: 0179f48c551540d409b141827a9340bb, type: 3}
     matchValue: Indigo Dot
