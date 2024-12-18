@@ -28,13 +28,13 @@ public class EndGameManager : MonoBehaviour
     public int currentCounterValue;
     private Board board;
     private float timerSeconds;
+    private int startMoves; //////////////////////////////////////////
     public DifficultyLevel difficulty; //
     public enum DifficultyLevel //
     {
         Normal, // Обычный
         Hard    // Сложный
     }
-    private string dbPath; //
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +43,6 @@ public class EndGameManager : MonoBehaviour
         board = FindObjectOfType<Board>();
         SetGameType();
         SetupGame();
-    #if UNITY_EDITOR
-            dbPath = "URI=file:" + Application.dataPath + "/Plugins/SQLiter/RegDB.db";
-    #elif UNITY_STANDALONE_WIN
-            dbPath = "URI=file:" + Application.dataPath + "/Plugins/SQLiter/RegDB.db";
-    #else
-            dbPath = "URI=file:" + Application.persistentDataPath + "/Plugins/SQLiter/RegDB.db";
-    #endif
     }
 
     void SetGameType()
@@ -72,6 +65,7 @@ public class EndGameManager : MonoBehaviour
         if (difficulty == EndGameManager.DifficultyLevel.Hard)
         {
             // Если сложность Hard, делим значения на 2
+            startMoves = requirements.counterValue;
             requirements.counterValue = Mathf.CeilToInt(requirements.counterValue / 2f);
         }
     }
@@ -110,16 +104,14 @@ public class EndGameManager : MonoBehaviour
     {
         if (difficulty == EndGameManager.DifficultyLevel.Hard)
         {
-            // Если сложность Hard, делим значения на 2
-            requirements.counterValue = Mathf.CeilToInt(requirements.counterValue * 2f);
+            //requirements.counterValue = Mathf.CeilToInt(requirements.counterValue * 2f); // 
+            requirements.counterValue = startMoves;
         }
+        PlayerPrefs.SetString("GameDifficulty", "Normal");
         youWinPanel.SetActive(true);
         board.currentState = GameState.win;
         currentCounterValue = 0;
         counter.text = "" + currentCounterValue;
-
-        int levelToUnlock = PlayerPrefs.GetInt("Current Level", 2);
-        UnlockLevelInDatabase(levelToUnlock); // Разблокируем уровень в базе данных
 
         FadePanelController fade = FindObjectOfType<FadePanelController>();
         fade.GameOver();
@@ -129,9 +121,9 @@ public class EndGameManager : MonoBehaviour
     {
         if (difficulty == EndGameManager.DifficultyLevel.Hard)
         {
-            // Если сложность Hard, делим значения на 2
             requirements.counterValue = Mathf.CeilToInt(requirements.counterValue * 2f);
         }
+        PlayerPrefs.SetString("GameDifficulty", "Normal");
         tryAgainPanel.SetActive(true);
         board.currentState = GameState.lose;
         Debug.Log("Поражение");
@@ -153,7 +145,7 @@ public class EndGameManager : MonoBehaviour
             }
         }
     }
-    public void UnlockLevelInDatabase(int levelId) //
+    /*public void UnlockLevelInDatabase(int levelId) //
     {
         using (var connection = new SqliteConnection(dbPath))
         {
@@ -166,5 +158,5 @@ public class EndGameManager : MonoBehaviour
                 command.ExecuteNonQuery();
             }
         }
-    }
+    }*/
 }

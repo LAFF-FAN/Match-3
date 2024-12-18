@@ -5,6 +5,9 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System;
 using System.IO;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 public class MyAuthManager : MonoBehaviour
 {
@@ -12,14 +15,12 @@ public class MyAuthManager : MonoBehaviour
     public TMP_InputField passwordInput;
     public TMP_InputField confirmPasswordInput;
     public TextMeshProUGUI feedbackText;
-
     private string dbPath;
-
     public static bool isLoggedIn = false;
     void Start()
     {
         
-        dbPath = "URI=file:" + Application.persistentDataPath + "/Plugins/SQLiter/RegDB.db";
+        dbPath = "URI=file:" + "C:\\Users\\ПАВЕЛ\\Desktop\\DB\\RegDB.db";
         Debug.Log("Database path: " + dbPath); // Отладочный вывод пути к базе данных
     }
     public void Register()

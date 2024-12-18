@@ -87,14 +87,11 @@ public class PauseManager : MonoBehaviour
         EndGameManager endGameManager = FindObjectOfType<EndGameManager>();
         if (endGameManager != null)
         {
-            // Проверяем уровень сложности и изменяем counterValue
             if (endGameManager.difficulty == EndGameManager.DifficultyLevel.Hard)
             {
                 endGameManager.requirements.counterValue = Mathf.CeilToInt(endGameManager.requirements.counterValue * 2f);
             }
         }
-
-        // Загружаем сцену "Splash"
         SceneManager.LoadScene("Splash");
     }
 }
