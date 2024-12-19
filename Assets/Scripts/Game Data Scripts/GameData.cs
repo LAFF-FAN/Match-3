@@ -23,12 +23,12 @@ public class GameData : MonoBehaviour
         {
             DontDestroyOnLoad(this.gameObject);
             gameData = this;
+            Load();
         }
         else
         {
             Destroy(this.gameObject);
         }
-        Load();
     }
 
     private void Start()
@@ -38,23 +38,34 @@ public class GameData : MonoBehaviour
     public void Save()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/player.dat", FileMode.Create);
-        SaveData data = new SaveData();
-        data = saveData;
-        formatter.Serialize(file, data);
+        string path = Application.persistentDataPath + "/player.dat";
+        FileStream file = File.Open(path, FileMode.Create);
+        formatter.Serialize(file, saveData);
         file.Close();
-        Debug.Log("Saved");
+        Debug.Log("Saved data to: " + path);
     }
 
     public void Load()
     {
-        if(File.Exists(Application.persistentDataPath + "/player.dat"))
+        string path = Application.persistentDataPath + "/player.dat";
+        if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "player.dat", FileMode.Open);
+            FileStream file = File.Open(path, FileMode.Open);
             saveData = formatter.Deserialize(file) as SaveData;
             file.Close();
-            Debug.Log("Loaded");
+            Debug.Log("Loaded data from: " + path);
+        }
+        else
+        {
+            Debug.LogWarning("Save file not found at: " + path);
+            // Инициализируйте saveData, если файл не найден
+            saveData = new SaveData
+            {
+                isActive = new bool[10], // Пример инициализации
+                highScores = new int[10],
+                stars = new int[10]
+            };
         }
     }
 
