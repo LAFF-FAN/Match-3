@@ -17,6 +17,7 @@ public class MyAuthManager : MonoBehaviour
     public TextMeshProUGUI feedbackText;
     private string dbPath;
     public static bool isLoggedIn = false;
+    public static string currentUsername; //
     void Start()
     {
         
@@ -128,6 +129,7 @@ public class MyAuthManager : MonoBehaviour
                         PlayerPrefs.SetInt("IsLoggedIn", 1);
                         PlayerPrefs.Save();
 
+                        Debug.Log(username);
                         feedbackText.text = "¬ход выполнен успешно!";
                         isLoggedIn = true;
                     }

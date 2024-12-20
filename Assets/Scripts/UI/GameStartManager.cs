@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStartManager : MonoBehaviour
 {
     public GameObject startPanel;
     public GameObject levelPanel;
     public GameObject logPanel;
+    private GameData gameData;
     void Start()
     {
         startPanel.SetActive(true);
@@ -16,6 +18,7 @@ public class GameStartManager : MonoBehaviour
 
     public void PlayGame()
     {
+        GameData.gameData.Load();
         startPanel.SetActive(false);
         levelPanel.SetActive(true);
     }
@@ -30,7 +33,6 @@ public class GameStartManager : MonoBehaviour
         startPanel.SetActive(false);
         logPanel.SetActive(true);
     }
-
     public void Exit()
     {
 #if UNITY_EDITOR

@@ -17,7 +17,8 @@ public class GameData : MonoBehaviour
 {
     public static GameData gameData;
     public SaveData saveData;
-    void Awake()
+    public static string currentUsername; //
+        public void Awake()
     {
         if(gameData == null)
         {
@@ -37,8 +38,14 @@ public class GameData : MonoBehaviour
     }
     public void Save()
     {
+        if (string.IsNullOrEmpty(currentUsername))
+        {
+            Debug.LogWarning("Имя пользователя не установлено. Сохранение невозможно.");
+            return;
+        }
+
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.dat";
+        string path = Application.persistentDataPath + "/" + currentUsername + "_player.dat"; // Используем имя пользователя в пути
         FileStream file = File.Open(path, FileMode.Create);
         formatter.Serialize(file, saveData);
         file.Close();
@@ -47,7 +54,15 @@ public class GameData : MonoBehaviour
 
     public void Load()
     {
-        string path = Application.persistentDataPath + "/player.dat";
+        currentUsername = PlayerPrefs.GetString("Username", string.Empty);
+        Debug.Log("Loaded username: " + currentUsername);
+        if (string.IsNullOrEmpty(currentUsername))
+        {
+            Debug.LogWarning("Имя пользователя не установлено. Загрузка невозможна.");
+            return;
+        }
+
+        string path = Application.persistentDataPath + "/" + currentUsername + "_player.dat"; // Используем имя пользователя в пути
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -62,19 +77,23 @@ public class GameData : MonoBehaviour
             // Инициализируйте saveData, если файл не найден
             saveData = new SaveData
             {
-                isActive = new bool[10], // Пример инициализации
-                highScores = new int[10],
-                stars = new int[10]
+                isActive = new bool[30], // Пример инициализации
+                highScores = new int[30],
+                stars = new int[30]
             };
+            // Установите isActive[0] в true
+            if (saveData.isActive.Length > 1)
+            {
+                saveData.isActive[0] = true;
+            }
         }
     }
-
     private void OnDisaeble()
     {
         Save();
     }
     void Update()
     {
-        
+
     }
 }

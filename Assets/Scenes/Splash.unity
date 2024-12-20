@@ -1983,7 +1983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveData:
-    isActive: 010101000000000000000000000000000000000000000000000000000000
+    isActive: 010101010101010101010000000000000000000000000000000000000000
     highScores: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     stars: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &90154638
@@ -7968,7 +7968,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1964122676}
+      - m_Target: {fileID: 1964122678}
         m_TargetAssemblyTypeName: MyAuthManager, Assembly-CSharp-firstpass
         m_MethodName: Login
         m_Mode: 1
@@ -15812,7 +15812,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1964122676}
+      - m_Target: {fileID: 1964122678}
         m_TargetAssemblyTypeName: MyAuthManager, Assembly-CSharp-firstpass
         m_MethodName: Register
         m_Mode: 1
@@ -27824,6 +27824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964122677}
   - component: {fileID: 1964122676}
+  - component: {fileID: 1964122678}
   m_Layer: 0
   m_Name: RegDb
   m_TagString: Untagged
@@ -27843,10 +27844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33324117ce57f484ebffb9b73b53c8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usernameInput: {fileID: 1465058551}
-  passwordInput: {fileID: 1666138580}
-  confirmPasswordInput: {fileID: 1873468817}
-  feedbackText: {fileID: 260058150}
 --- !u!4 &1964122677
 Transform:
   m_ObjectHideFlags: 0
@@ -27862,6 +27859,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1964122678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964122675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4b19bde769d6a42b1959b8b473dc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usernameInput: {fileID: 1465058551}
+  passwordInput: {fileID: 1666138580}
+  confirmPasswordInput: {fileID: 1873468817}
+  feedbackText: {fileID: 260058150}
 --- !u!1 &1968161883
 GameObject:
   m_ObjectHideFlags: 0
